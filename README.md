@@ -47,7 +47,7 @@ An Example Calendar:
 
 /calendar - page that visualizes the mood calendar
 
-![list](documentation/calendar.png)
+![list](documentation/calendar.PNG)
 
 /calendar/slug - page for showing specific Day
 
