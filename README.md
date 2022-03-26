@@ -51,7 +51,6 @@ An Example Calendar:
 
 ![calendar](documentation/calendar.PNG)
 ![calendar add](documentation/calendar-add.PNG)
-![list](documentation/calendar.PNG)
 
 /calendar/slug - page for showing specific Day
 
@@ -79,7 +78,7 @@ An Example Calendar:
     * see <code>temp</code> for register page
     * see <code>temp</code> for login page
 * (3 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
+    * see <code>temp</code>
     * if you put in a number that's greater than 5, an error message will appear in the dom
 * (5 points) React.js
     * React as a frontend framework, assigned 5 points becuase of the learning curve
