@@ -39,8 +39,6 @@ An Example Calendar:
 
 ## Wireframes
 
-(__TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
-
 /home - page that allows you to login or register
 
 ![home](documentation/home.PNG)
@@ -53,6 +51,7 @@ An Example Calendar:
 
 ![calendar](documentation/calendar.PNG)
 ![calendar add](documentation/calendar-add.PNG)
+![list](documentation/calendar.PNG)
 
 /calendar/slug - page for showing specific Day
 
