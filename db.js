@@ -2,6 +2,7 @@ const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose');
 
+  const uri = process.env.MONGODB_URI;
 
 // * our site requires authentication...
 // * so users have a username and password
@@ -38,30 +39,8 @@ mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
 mongoose.model('Day', Day);
 
-/*
-// is the environment variable, NODE_ENV, set to PRODUCTION? 
-let dbconf;
-if (process.env.NODE_ENV === 'PRODUCTION') {
- // if we're in PRODUCTION mode, then read the configration from a file
- // use blocking file io to do this...
- const fs = require('fs');
- const path = require('path');
- const fn = path.join(__dirname, 'config.json');
- const data = fs.readFileSync(fn);
 
- // our configuration file will be in json, so parse it and set the
- // conenction string appropriately!
- const conf = JSON.parse(data);
- dbconf = conf.dbconf;
-} else {
- // if we're not in PRODUCTION mode, then use
- dbconf = 'mongodb://localhost/moodCalendarDB';
-}
-
-mongoose.connect(dbconf);
-*/
-
-mongoose.connect("mongodb+srv://rakeeb:mongoDB@mooddb.znyjw.mongodb.net/moodCalendarDB?retryWrites=true&w=majority");
+mongoose.connect(uri || "mongodb://localhost/moodCalendarDB");
 
 mongoose.connection.on('connected', () => {
 	//console.log("Mongoose is connnected to ", dbconf);
