@@ -64,5 +64,7 @@ mongoose.connect(dbconf);
 mongoose.connect("mongodb+srv://rakeeb:mongoDB@mooddb.znyjw.mongodb.net/moodCalendarDB?retryWrites=true&w=majority");
 
 mongoose.connection.on('connected', () => {
-	console.log("Mongoose is connnected to ", dbconf);
+	//console.log("Mongoose is connnected to ", dbconf);
+	console.log("Mongoose is connnected!");
+
 });
