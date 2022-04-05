@@ -10,7 +10,7 @@ const routes = require('./routes/index');
 // const listItem = require('./routes/list-item');
 
 const app = express();
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));

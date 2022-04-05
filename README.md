@@ -70,9 +70,8 @@ An Example Calendar:
 
 ## Research Topics
 
-(__TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
 
-* (4 points) Integrate user authentication
+* (3 points) Integrate user authentication
     * I'm going to be using passport for user authentication
     * And account has been made for testing; I'll email you the password
     * see <code>temp</code> for register page
@@ -82,6 +81,10 @@ An Example Calendar:
     * if you put in a number that's greater than 5, an error message will appear in the dom
 * (5 points) React.js
     * React as a frontend framework, assigned 5 points becuase of the learning curve
+* (3 points) Weather API
+    * I'm going use a weather API, no particular one in mind yet, but 
+    * I'm assigning 3 because I never used an API before
+    
 12 points total out of 8 required points 
 
 ## [Link to Initial Main Project File](app.js) 

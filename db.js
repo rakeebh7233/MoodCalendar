@@ -2,12 +2,16 @@ const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose');
 
+//const MONGODB_URI = 'mongodb+srv://rakeeb:mongoDB@mooddb.znyjw.mongodb.net/moodCalendarDB?retryWrites=true&w=majority'
+
 // * our site requires authentication...
 // * so users have a username and password
 // * they also have a calendar
 const User = new mongoose.Schema({
 	// username: provided by authentication plugin
+	username: String,
 	// password: hash provided by authentication plugin
+	password: String,
   	calendar:  { type: mongoose.Schema.Types.ObjectId, ref: 'Calendar' }
 });
 
@@ -29,9 +33,13 @@ const Calendar = new mongoose.Schema({
 });
 
 User.plugin(passportLocalMongoose);
-Day.plugin(URLSlugs('name'));
+Day.plugin(URLSlugs('name')); // check if this works
 
 mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
 mongoose.model('Day', Day);
 mongoose.connect('mongodb://localhost/moodCalendarDB');
+
+mongoose.connection.on('connected', () => {
+	console.log("Mongoose is connnected!")
+});
