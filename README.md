@@ -84,6 +84,9 @@ An Example Calendar:
 * (3 points) Weather API
     * I'm going use a weather API, no particular one in mind yet, but 
     * I'm assigning 3 because I never used an API before
+* (2 points) Deployment on Heroku
+    * I will deploy my project on Heroku, the current domain is <code>https://mood-calendar-ait.herokuapp.com/</code>
+
     
 12 points total out of 8 required points 
 
