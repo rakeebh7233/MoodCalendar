@@ -6,10 +6,11 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes/index');
-const list = require('./routes/list');
-const listItem = require('./routes/list-item');
+// const list = require('./routes/list');
+// const listItem = require('./routes/list-item');
 
 const app = express();
+const port = process.env.PORT || 5000
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-app.use('/list', list);
-app.use('/list-item', listItem);
+//app.use('/list', list);
+//app.use('/list-item', listItem);
 
-app.listen(3000);
+app.listen(port, console.log(`Server is starting on port ${port}`));

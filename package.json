@@ -1,10 +1,11 @@
 {
   "name": "final-project-template",
   "version": "1.0.0",
-  "description": "The content below is an example project proposal / requirements document. Replace the text below the lines marked \"__TODO__\" with details specific to your project. Remove the \"TODO\" lines.",
+  "description": "Mood Calender packages",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,9 @@
   "devDependencies": {
     "eslint": "^8.11.0",
     "eslint-plugin-mocha": "^10.0.3"
+  },
+  "engines": {
+    "node": "16.13.2"
   }
+
 }

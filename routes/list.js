@@ -1,6 +1,7 @@
 const express = require('express'),
 	router = express.Router(),
-	mongoose = require('mongoose'),
+	mongoose = require('mongoose')
+/*
 	List = mongoose.model('List');
 
 const isAuthenticated = (req, res, next) => {
@@ -41,5 +42,5 @@ router.get('/:slug', (req, res) => {
 		res.render('list-slug.hbs', {list, displayListItems:list.items.length >= 1});
 	});
 });
-
+*/
 module.exports = router;

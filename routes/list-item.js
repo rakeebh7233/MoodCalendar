@@ -1,7 +1,9 @@
 const express = require('express'),
 	router = express.Router(),
-	mongoose = require('mongoose'),
-	List = mongoose.model('List'),
+	mongoose = require('mongoose')
+
+/*
+	List = mongoose.model('List')
 	Item = mongoose.model('Item');
 
 router.post('/create', (req, res) => {
@@ -32,5 +34,5 @@ router.post('/check', (req, res) => {
 		});
 	});
 });
-
+*/
 module.exports = router;
