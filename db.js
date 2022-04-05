@@ -38,6 +38,7 @@ mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
 mongoose.model('Day', Day);
 
+/*
 // is the environment variable, NODE_ENV, set to PRODUCTION? 
 let dbconf;
 if (process.env.NODE_ENV === 'PRODUCTION') {
@@ -58,6 +59,9 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 }
 
 mongoose.connect(dbconf);
+*/
+
+mongoose.connect("mongodb+srv://rakeeb:mongoDB@mooddb.znyjw.mongodb.net/moodCalendarDB?retryWrites=true&w=majority");
 
 mongoose.connection.on('connected', () => {
 	console.log("Mongoose is connnected to ", dbconf);
