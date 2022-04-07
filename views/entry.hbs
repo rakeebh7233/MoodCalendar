@@ -1,0 +1,35 @@
+<h2>Create a new Mood Entry</h2>
+<form action="/entry" method="POST">
+    <div class='form-row'>
+        <label for="date">Entry date:</label>
+        <input type="date" min="2022-01-01" max="2022-12-31" name="date">
+    </div>
+    <div class='form-row'>
+        <label for="Mood1">Primary Mood</label>
+        <select name="mood1">
+            <option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="angry">Angry</option>
+            <option value="excited">Excited</option>
+        </select>
+    </div>
+    <div class='form-row'>
+        <label for="Mood2">Secondary Mood</label>
+        <select name="mood2">
+            <option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="angry">Angry</option>
+            <option value="excited">Excited</option>
+        </select>
+    </div>
+    <div class='form-row'>
+        <label for="entry">Journal</label>
+        <br>
+        <textarea name="msg" cols="50" rows="15" placeholder="Enter your journal entry..."></textarea>
+    </div>
+    <div class='form-row'>
+        <label for="temp">Temperature:</label>
+        <input type="text" name="temp">
+    </div>
+    <div class='form-row'><input type="submit" value="Add Entry"></div>
+</form>

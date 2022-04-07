@@ -17,9 +17,12 @@ form {
 }
 
 #wrapper {
-	width:500px;
 	padding:2em;
   	background-color:#eee;
+}
+
+#ft {
+	margin-top: 2em;
 }
 
 #grocery-list {
@@ -62,3 +65,15 @@ input[type=submit]:hover {
 	background-color: #0073AA;
 	color: white;
 }
+
+table {
+	margin: auto;
+	margin-top: 2em;
+}
+
+th, td {
+	text-align: left;
+	padding: 15px;
+	border: 1px solid darkblue;
+}
+

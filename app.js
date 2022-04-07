@@ -6,8 +6,8 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes/index');
-// const list = require('./routes/list');
-// const listItem = require('./routes/list-item');
+const entry = require('./routes/entry')
+const allEntries = require('./routes/all-entries')
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -39,7 +39,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-//app.use('/list', list);
-//app.use('/list-item', listItem);
+app.use('/entry', entry);
+app.use('/all-entries', allEntries);
+
 
 app.listen(port, console.log(`Server is starting on port ${port}`));

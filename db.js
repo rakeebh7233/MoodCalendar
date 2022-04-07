@@ -18,10 +18,12 @@ const User = new mongoose.Schema({
 // a day in the calendar
 // * Each day has an associated date, moods, entry, and weather Data
 const Day = new mongoose.Schema({
-	date: {type: String, min:8, max:8},
+	date: {type: String},
 	moods: [{type: String}],
 	entry: {type: String},
-	weatherData: {type: String} 
+	weatherData: {type: String}
+}, {
+    _id: true
 });
 
 // Each calender is associated with one user
@@ -33,7 +35,7 @@ const Calendar = new mongoose.Schema({
 });
 
 User.plugin(passportLocalMongoose);
-Day.plugin(URLSlugs('name')); // check if this works
+// Day.plugin(URLSlugs('date')); // check if this works
 
 mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
@@ -45,5 +47,4 @@ mongoose.connect(uri || "mongodb://localhost/moodCalendarDB");
 mongoose.connection.on('connected', () => {
 	//console.log("Mongoose is connnected to ", dbconf);
 	console.log("Mongoose is connnected!");
-
 });
