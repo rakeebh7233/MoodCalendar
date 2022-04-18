@@ -2,7 +2,8 @@ const express = require('express'),
     router = express.Router(),
     passport = require('passport'),
     mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    Day = mongoose.model('Day');
 
 router.get('/logout', (req, res) => {
   req.logout();

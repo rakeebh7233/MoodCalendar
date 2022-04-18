@@ -25,26 +25,6 @@ form {
 	margin-top: 2em;
 }
 
-#grocery-list {
-	background-color:#ddd;
-	padding: 1em;
-}
-
-#grocery-list li {
-	list-style-type: none;
-	padding-top:0.25em;
-	padding-bottom:0.25em;
-}
-
-#grocery-list li.checked {
-	text-decoration: line-through;
-	padding: 0.25em 0.25em 0.25em 1.5em;
-}
-
-.qty {
-	width: 3em;
-}
-
 input[type='checkbox'] {
 	margin-right: 1em;
 }
@@ -68,12 +48,13 @@ input[type=submit]:hover {
 
 table {
 	margin: auto;
-	margin-top: 2em;
 }
 
 th, td {
-	text-align: left;
-	padding: 15px;
+	text-align: center;
+	padding: 0px;
+	width: 60px;
+	height: 40px;
 	border: 1px solid darkblue;
 }
 

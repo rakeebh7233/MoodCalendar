@@ -35,16 +35,14 @@ const Calendar = new mongoose.Schema({
 });
 
 User.plugin(passportLocalMongoose);
-// Day.plugin(URLSlugs('date')); // check if this works
+Day.plugin(URLSlugs('date')); // check if this works
 
 mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
 mongoose.model('Day', Day);
 
-
 mongoose.connect(uri || "mongodb://localhost/moodCalendarDB");
 
 mongoose.connection.on('connected', () => {
-	//console.log("Mongoose is connnected to ", dbconf);
 	console.log("Mongoose is connnected!");
 });
