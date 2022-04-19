@@ -16,14 +16,14 @@ const isAuthenticated = (req, res, next) => {
 
 router.use(isAuthenticated);
 
-router.get('/', (req, res) => {
-    res.render('entry');
+router.get('/create', (req, res) => {
+    res.render('create-entry');
 });
 
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const apiParams = '&APPID=d9d709fd7de9396d57936eacca6122d5&units=imperial';
 
-router.post('/', (req,res) => {
+router.post('/create', (req,res) => {
     const date = req.body.date;
     const moods = [req.body.mood1,req.body.mood2]
     const msg = req.body.msg;
@@ -37,27 +37,39 @@ router.post('/', (req,res) => {
             return response.json();
         })
         .then ((data) => {
-            const temp = data.main.temp + "°F";
+            let temp;
+            if (data.main === undefined) {
+                temp = "no data";
+            }
+            else {
+                temp = data.main.temp + "°F";
+            }
             
             const newDay = new Day ({
                 date: date,
                 moods: moods,
                 entry: msg,
-                weatherData: temp
+                temperature: temp
             });
         
             newDay.save(function(err,savedDay,count) {
                 console.log(err);
-                res.redirect('/all-entries');
+                res.redirect(`/entry/${savedDay.slug}`);
             }); 
+
         })
         .catch ((err) => {
             console.log(err)
         });
-
-    
 });
 
+router.get('/:slug', (req, res) => {
+	const {slug} = req.params;
+	Day.findOne({slug}, (err, day) => {
+        day.moods = day.moods.join(" and ")
+		res.render('entry-slug', {day});
+	});
+});
 
 module.exports = router;
 

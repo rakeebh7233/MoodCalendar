@@ -1,18 +1,18 @@
 <h2>All Entries</h2>
-<table>
+<table id="allEntries">
     <thead>
-        <th>Date</th>
-        <th>Moods</th>
-        <th>Journal Entry</th>
-        <th>Weather Data</th>
+        <th id="date">Date</th>
+        <th id="moods">Moods</th>
+        <th id="journal">Journal Entry</th>
+        <th id="temp">Temperature</th>
     </thead>
     <tbody>
         {{#each days}}
         <tr>
-            <td>{{date}}</td>
-            <td>{{moods}}</td>
-            <td>{{entry}}</td>
-            <td>{{weatherData}}</td>
+            <td id="date">{{date}}</td>
+            <td id="moods">{{moods}}</td>
+            <td id="journal">{{entry}}</td>
+            <td id="temp">{{temperature}}</td>
         </tr>
         {{/each}}
     </tbody>

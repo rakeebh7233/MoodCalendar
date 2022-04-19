@@ -21,7 +21,7 @@ const Day = new mongoose.Schema({
 	date: {type: String},
 	moods: [{type: String}],
 	entry: {type: String},
-	weatherData: {type: String}
+	temperature: {type: String}
 }, {
     _id: true
 });

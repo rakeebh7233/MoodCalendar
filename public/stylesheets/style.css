@@ -3,6 +3,10 @@ body {
   font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h2 {
+	text-align: center;
+}
+
 a {
   color: #0073AA;
 }
@@ -58,3 +62,30 @@ th, td {
 	border: 1px solid darkblue;
 }
 
+#allEntries th,td {
+	text-align: center;
+	padding: 0px;
+	height: 40px;
+	border: 1px solid darkblue;
+}
+
+#date, #moods{
+	width: 150px;
+}
+
+#journal {
+	width: 300px;
+}
+
+#temp {
+	width: 125px;
+}
+
+#entry-slug span {
+	color: darkblue;
+	font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#entry-slug {
+	font-size: 16px;
+}
