@@ -2,18 +2,7 @@ const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose');
 
-  const uri = process.env.MONGODB_URI;
-
-// * our site requires authentication...
-// * so users have a username and password
-// * they also have a calendar
-const User = new mongoose.Schema({
-	// username: provided by authentication plugin
-	username: String,
-	// password: hash provided by authentication plugin
-	password: String,
-  	calendar:  { type: mongoose.Schema.Types.ObjectId, ref: 'Calendar' }
-});
+const uri = process.env.MONGODB_URI;
 
 // a day in the calendar
 // * Each day has an associated date, moods, entry, and weather Data
@@ -21,9 +10,7 @@ const Day = new mongoose.Schema({
 	date: {type: String},
 	moods: [{type: String}],
 	entry: {type: String},
-	temperature: {type: String}
-}, {
-    _id: true
+	temperature: {type: String},
 });
 
 // Each calender is associated with one user
@@ -34,8 +21,18 @@ const Calendar = new mongoose.Schema({
 	days: [Day]
 });
 
+// * our site requires authentication...
+// * so users have a username and password
+// * they also have a calendar
+const User = new mongoose.Schema({
+	// username: provided by authentication plugin
+	username: { type: String, unique: true },
+	// password: hash provided by authentication plugin
+	password: String,
+});
+
 User.plugin(passportLocalMongoose);
-Day.plugin(URLSlugs('date')); // check if this works
+Day.plugin(URLSlugs('date')); 
 
 mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);

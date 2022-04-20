@@ -3,7 +3,7 @@ const express = require('express'),
     passport = require('passport'),
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
-    Day = mongoose.model('Day');
+    Calendar = mongoose.model("Calendar");
 
 router.get('/logout', (req, res) => {
   req.logout();
@@ -12,7 +12,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/', (req, res) =>  {
   res.render('home');
-});
+}); 
 
 router.get('/login', (req, res) =>  {
   res.render('login');
@@ -24,13 +24,14 @@ router.get('/register', (req, res) =>  {
 
 router.post('/register', (req, res) =>  {
   const {username, password} = req.body;
-  User.register(new User({username}), req.body.password, (err, user) => {
+  User.register({username}, password, (err, user) => {
     if (err) {
       res.render('register',{message:'Your registration information is not valid'});
     } else {
       passport.authenticate('local')(req, res, function() {
         res.redirect('/');
       });
+      
     }
   });   
 });

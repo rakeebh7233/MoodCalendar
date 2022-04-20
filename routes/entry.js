@@ -1,8 +1,10 @@
 const express = require('express'),
 	router = express.Router(),
-	mongoose = require('mongoose');
-    Day = mongoose.model('Day');
-//import fetch from "node-fetch";
+	mongoose = require('mongoose'),
+    Day = mongoose.model('Day'),
+    Calendar = mongoose.model('Calendar')
+    User = mongoose.model("User");
+
 const fetch = require('node-fetch');
 
 const isAuthenticated = (req, res, next) => {
@@ -44,14 +46,21 @@ router.post('/create', (req,res) => {
             else {
                 temp = data.main.temp + "°F";
             }
-            
+            //new Calendar ({user: req.user._id}).save();
             const newDay = new Day ({
                 date: date,
                 moods: moods,
                 entry: msg,
                 temperature: temp
             });
-        
+            /*const newDay = {date,moods,msg,temp}
+            Calendar.findOneAndUpdate({user: req.user._id}, {$push: {days: newDay}}, (err,cal)=> {
+                console.log(err);
+                // res.redirect(`/entry/${date}`)
+                res.redirect(`/entry/2022-04-19`)
+            })
+            */
+            
             newDay.save(function(err,savedDay,count) {
                 console.log(err);
                 res.redirect(`/entry/${savedDay.slug}`);
