@@ -5,6 +5,7 @@ const express = require('express'),
     Calendar = mongoose.model('Calendar')
     User = mongoose.model("User");
 
+const async = require('hbs/lib/async');
 const fetch = require('node-fetch');
 
 const isAuthenticated = (req, res, next) => {
@@ -25,7 +26,7 @@ router.get('/create', (req, res) => {
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const apiParams = '&APPID=d9d709fd7de9396d57936eacca6122d5&units=imperial';
 
-router.post('/create', (req,res) => {
+router.post('/create', async (req,res) => {
     const date = req.body.date;
     const moods = [req.body.mood1,req.body.mood2]
     const msg = req.body.msg;
@@ -38,7 +39,7 @@ router.post('/create', (req,res) => {
         .then ((response) => {
             return response.json();
         })
-        .then ((data) => {
+        .then (async (data) => {
             let temp;
             if (data.main === undefined) {
                 temp = "no data";
@@ -46,25 +47,49 @@ router.post('/create', (req,res) => {
             else {
                 temp = data.main.temp + "°F";
             }
-            //new Calendar ({user: req.user._id}).save();
-            const newDay = new Day ({
+
+            const newDay = await new Day ({
                 date: date,
                 moods: moods,
                 entry: msg,
                 temperature: temp
+            }).save();
+
+            Calendar.exists({user: req.user._id}, (err, result) => {
+                if (!err) {
+                    if (!result) {// If calendar doesn't exist
+                        console.log(newDay);
+                        const newCal = new Calendar ({
+                            user: req.user._id,
+                        });
+                        newCal.save((err,savedCal)=> {
+                            if (err) {
+                                console.log("err:", err);
+
+                            } else {
+                                savedCal.days.push(newDay);
+                                savedCal.save((err,savedCal)=>{
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                    else {
+                                        res.redirect(`/entry/${date}`);
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        Calendar.findOneAndUpdate({user: req.user._id}, {$push: {days: newDay}}, (err, calendar) => {
+                            if (err) { console.log(err); }
+                            else {
+                                console.log(newDay);
+                                res.redirect(`/entry/${date}`);
+                            }
+                        });
+                    }
+                }
             });
-            /*const newDay = {date,moods,msg,temp}
-            Calendar.findOneAndUpdate({user: req.user._id}, {$push: {days: newDay}}, (err,cal)=> {
-                console.log(err);
-                // res.redirect(`/entry/${date}`)
-                res.redirect(`/entry/2022-04-19`)
-            })
-            */
             
-            newDay.save(function(err,savedDay,count) {
-                console.log(err);
-                res.redirect(`/entry/${savedDay.slug}`);
-            }); 
 
         })
         .catch ((err) => {

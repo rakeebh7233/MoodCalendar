@@ -7,7 +7,7 @@ const uri = process.env.MONGODB_URI;
 // a day in the calendar
 // * Each day has an associated date, moods, entry, and weather Data
 const Day = new mongoose.Schema({
-	date: {type: String},
+	date: {type: String, required: true},
 	moods: [{type: String}],
 	entry: {type: String},
 	temperature: {type: String},
@@ -32,7 +32,7 @@ const User = new mongoose.Schema({
 });
 
 User.plugin(passportLocalMongoose);
-Day.plugin(URLSlugs('date')); 
+//Day.plugin(URLSlugs('date')); 
 
 mongoose.model('User', User);
 mongoose.model('Calendar', Calendar);
