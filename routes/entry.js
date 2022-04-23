@@ -47,13 +47,6 @@ router.post('/create', async (req,res) => {
                     tempData = value;
                 }
             });
-            // let temp;
-            // if (tempValue === undefined) {
-            //     temp = "no data";
-            // }
-            // else {
-            //     temp = tempValue + "°F";
-            // }
 
             const newDay = await new Day ({
                 date: date,

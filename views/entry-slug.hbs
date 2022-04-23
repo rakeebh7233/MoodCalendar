@@ -18,20 +18,37 @@
 </section>
 
 <script>
+    class TempData {
+        constructor(feels_like, temp_min, temp_max, pressure, humidity) {
+            this.feels_like = feels_like;
+            this.temp_min = temp_min;
+            this.temp_max = temp_max;
+            this.pressure = pressure;
+            this.humidity = humidity;
+        }
+
+        displayData(parentEle) {
+            const asArray = Object.entries(this);
+            asArray.map((ele) => {
+                const div = document.createElement('div');
+                div.innerText = ele[0]+': ' + ele[1];
+                parentEle.appendChild(div);
+            })
+            console.log(asArray);
+        }
+    }
+
     const button = document.getElementById("weatherData")
-    console.log({{day}})
     button.addEventListener("click", function() { 
         button.classList.add("hidden");
         const section = document.querySelector("#entry-slug");
         const div = document.createElement('div');
         div.classList.add("form-row")
         div.innerText = "Advanced Temperature data: ";
-        section.appendChild(div)
+        const tempData = new TempData({{day.tempData.feels_like}}, {{day.tempData.temp_min}}, {{day.tempData.temp_max}}, {{day.tempData.pressure}},{{day.tempData.humidity}});
+        section.appendChild(div);
+        tempData.displayData(div);
     });
 
-    class TempData {
-        constructor() {
-
-        }
-    }
+   
 </script>
