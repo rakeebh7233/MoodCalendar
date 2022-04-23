@@ -89,3 +89,7 @@ th, td {
 #entry-slug {
 	font-size: 16px;
 }
+
+.hidden {
+	display: none;
+}

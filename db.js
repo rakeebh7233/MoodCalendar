@@ -10,7 +10,8 @@ const Day = new mongoose.Schema({
 	date: {type: String, required: true},
 	moods: [{type: String}],
 	entry: {type: String},
-	temperature: {type: String},
+	//temperature: {type: String}
+	tempData: {type: mongoose.Schema.Types.Mixed}
 });
 
 // Each calender is associated with one user

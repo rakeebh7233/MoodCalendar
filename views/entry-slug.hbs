@@ -1,3 +1,5 @@
+
+
 <section id="entry-slug">
     <h3><span>Entry for: </span>{{day.date}}</h3>
     <div class='form-row'>
@@ -9,6 +11,27 @@
     </div>
 
     <div class='form-row'>
-        <span>Temperature: </span> {{day.temperature}}
+        <span>Temperature: </span> {{day.tempData.temp}} °F
     </div>
+
+    <button id="weatherData">Display Advanced Temperature Data</button>
 </section>
+
+<script>
+    const button = document.getElementById("weatherData")
+    console.log({{day}})
+    button.addEventListener("click", function() { 
+        button.classList.add("hidden");
+        const section = document.querySelector("#entry-slug");
+        const div = document.createElement('div');
+        div.classList.add("form-row")
+        div.innerText = "Advanced Temperature data: ";
+        section.appendChild(div)
+    });
+
+    class TempData {
+        constructor() {
+
+        }
+    }
+</script>

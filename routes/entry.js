@@ -40,25 +40,32 @@ router.post('/create', async (req,res) => {
             return response.json();
         })
         .then (async (data) => {
-            let temp;
-            if (data.main === undefined) {
-                temp = "no data";
-            }
-            else {
-                temp = data.main.temp + "°F";
-            }
+            const asArray = Object.entries(data);
+            let tempData;
+            asArray.filter(([key, value]) => {
+                if (key==='main') {
+                    tempData = value;
+                }
+            });
+            // let temp;
+            // if (tempValue === undefined) {
+            //     temp = "no data";
+            // }
+            // else {
+            //     temp = tempValue + "°F";
+            // }
 
             const newDay = await new Day ({
                 date: date,
                 moods: moods,
                 entry: msg,
-                temperature: temp
+                tempData: tempData
             }).save();
 
             Calendar.exists({user: req.user._id}, (err, result) => {
                 if (!err) {
                     if (!result) {// If calendar doesn't exist
-                        console.log(newDay);
+                        //console.log(newDay);
                         const newCal = new Calendar ({
                             user: req.user._id,
                         });
@@ -98,12 +105,15 @@ router.post('/create', async (req,res) => {
 });
 
 router.get('/:slug', (req, res) => {
-	const {slug} = req.params;
-	Day.findOne({slug}, (err, day) => {
+    console.log(req.params);
+	const slug = req.params.slug;
+	Day.findOne({date: slug}, (err, day) => {
+        console.log(day)
         day.moods = day.moods.join(" and ")
 		res.render('entry-slug', {day});
 	});
 });
+
 
 module.exports = router;
 
