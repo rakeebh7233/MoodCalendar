@@ -103,6 +103,7 @@ router.post('/create', async (req,res) => {
 router.get('/:slug', async (req, res) => {
 	const slug = req.params.slug;
     const calendar = await Calendar.findOne({user: req.user._id});
+    console.log(calendar);
     if (calendar) {
         calendar.days.map(day => {
             if (day.date == slug) {
