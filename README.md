@@ -90,6 +90,6 @@ An Example Calendar:
 
 ## Annotations / References Used
 
-1. [passport.js authentication docs](http://passportjs.org/docs) - (auth.js)
-2. [OpenWeatherMap api doc](https://openweathermap.org/current) - (/routes/entry.js)
+1. [passport.js authentication docs](http://passportjs.org/docs) - <code>(auth.js)</code>
+2. [OpenWeatherMap api doc](https://openweathermap.org/current) - <code>(/routes/entry.js)</code>
 
