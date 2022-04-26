@@ -100,16 +100,20 @@ router.post('/create', async (req,res) => {
         });
 });
 
-router.get('/:slug', (req, res) => {
+router.get('/:slug', async (req, res) => {
 	const slug = req.params.slug;
-	Day.findOne({date: slug}, (err, day) => {
-        if (day) {
-            day.moods = day.moods.join(" and ")
-            res.render('entry-slug', {day});
-        } else {
-            res.redirect('/')
-        }
-	});
+    const calendar = await Calendar.findOne({user: req.user._id});
+    if (calendar) {
+        calendar.days.map(day => {
+            if (day.date == slug) {
+                day.moods = day.moods.join(" and ")
+                res.render('entry-slug', {day});
+                return;
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
 });
 
 
