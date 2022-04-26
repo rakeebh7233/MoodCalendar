@@ -1,5 +1,4 @@
 const mongoose = require('mongoose'),
-	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose');
 
 const uri = process.env.MONGODB_URI;
