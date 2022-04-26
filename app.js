@@ -21,7 +21,7 @@ const session = require('express-session');
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
-      saveUninitialized: true
+    saveUninitialized: true
 };
 app.use(session(sessionOptions));
 

@@ -5,7 +5,6 @@ const express = require('express'),
     Calendar = mongoose.model('Calendar')
     User = mongoose.model("User");
 
-const async = require('hbs/lib/async');
 const fetch = require('node-fetch');
 
 const isAuthenticated = (req, res, next) => {
@@ -32,6 +31,10 @@ router.post('/create', async (req,res) => {
     const msg = req.body.msg;
     const city = req.body.city;
     const countryCode  = req.body.country;
+
+    if (date=='') {
+        res.render('create-entry', {error: "A date is required"})
+    }
 
     const apiCallURL = apiEndpoint + city +',' + countryCode + apiParams;
 
@@ -98,12 +101,14 @@ router.post('/create', async (req,res) => {
 });
 
 router.get('/:slug', (req, res) => {
-    console.log(req.params);
 	const slug = req.params.slug;
 	Day.findOne({date: slug}, (err, day) => {
-        console.log(day)
-        day.moods = day.moods.join(" and ")
-		res.render('entry-slug', {day});
+        if (day) {
+            day.moods = day.moods.join(" and ")
+            res.render('entry-slug', {day});
+        } else {
+            res.redirect('/')
+        }
 	});
 });
 

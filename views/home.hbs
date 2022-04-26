@@ -3,11 +3,11 @@
     {{!-- This calendar design was pulled and then modified from: --}}
     {{!-- https://www.geeksforgeeks.org/design-a-calendar-using-html-and-css/ --}}
     <section>
+        
         <h2 align="center" style="color: orange;">
-            April 2022
+            April 2022 <a id="nextMonth" href="/may">Next Month ➔</a>
         </h2>
-        <br />
-        <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+        <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21" id="calendar">
           
         <!-- The tr tag is used to enter 
             rows in the table -->
@@ -45,64 +45,84 @@
           
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td id="2022-04-01">1</td>
-                <td>2</td>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td id="2022-04-01" style="background-color: {{2022-04-01}};">1</td>
+                <td id="2022-04-02" style="background-color: {{2022-04-02}};">2</td>
             </tr>
             <tr>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
+                <td id="2022-04-03" style="background-color: {{2022-04-03}};">3</td>
+                <td id="2022-04-04" style="background-color: {{2022-04-04}};">4</td>
+                <td id="2022-04-05" style="background-color: {{2022-04-05}};">5</td>
+                <td id="2022-04-06" style="background-color: {{2022-04-06}};">6</td>
+                <td id="2022-04-07" style="background-color: {{2022-04-07}};">7</td>
+                <td id="2022-04-08" style="background-color: {{2022-04-08}};">8</td>
+                <td id="2022-04-09" style="background-color: {{2022-04-09}};">9</td>
             </tr>
             <tr>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
+                <td id="2022-04-10" style="background-color: {{2022-04-10}};">10</td>
+                <td id="2022-04-11" style="background-color: {{2022-04-11}};">11</td>
+                <td id="2022-04-12" style="background-color: {{2022-04-12}};">12</td>
+                <td id="2022-04-13" style="background-color: {{2022-04-13}};">13</td>
+                <td id="2022-04-14" style="background-color: {{2022-04-14}};">14</td>
+                <td id="2022-04-15" style="background-color: {{2022-04-15}};">15</td>
+                <td id="2022-04-16" style="background-color: {{2022-04-16}};">16</td>
             </tr>
             <tr>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
+                <td id="2022-04-17" style="background-color: {{2022-04-17}};">17</td>
+                <td id="2022-04-18" style="background-color: {{2022-04-18}};">18</td>
+                <td id="2022-04-19" style="background-color: {{2022-04-19}};">19</td>
+                <td id="2022-04-20" style="background-color: {{2022-04-20}};">20</td>
+                <td id="2022-04-21" style="background-color: {{2022-04-21}};">21</td>
+                <td id="2022-04-22" style="background-color: {{2022-04-22}};">22</td>
+                <td id="2022-04-23" style="background-color: {{2022-04-23}};">23</td>
             </tr>
             <tr>
-                <td>31</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <td id="2022-04-24" style="background-color: {{2022-04-24}};">24</td>
+                <td id="2022-04-25" style="background-color: {{2022-04-25}};">25</td>
+                <td id="2022-04-26" style="background-color: {{2022-04-26}};">26</td>
+                <td id="2022-04-27" style="background-color: {{2022-04-27}};">27</td>
+                <td id="2022-04-28" style="background-color: {{2022-04-28}};">28</td>
+                <td id="2022-04-29" style="background-color: {{2022-04-29}};">29</td>
+                <td id="2022-04-30" style="background-color: {{2022-04-30}};">30</td>
+            </tr>  
+            <tr>
+                <td id="2022-04-31" style="background-color: {{2022-04-31}};">31</td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
             </tr>
         </tbody>
     </table>
+    <div style="text-align: center;">
+        Color Key: <br/>
+        Happy - Blue  <br/>
+        Sad - Orange  <br/>
+        Angry - Red  <br/>
+        Excited - Pink 
+    </div>
     </section>
 
 {{else}}
     <a href="/login">Login</a> or <a href="/register">Register</a> to access a calendar.
 {{/if}}
+
+<script>
+    const collection = document.getElementsByTagName("td");
+    for (let i=0; i<collection.length; i++ ) {
+        collection[i].addEventListener('click', function() {
+            const id = this.id;
+            try {
+                window.location.assign(`http://localhost:3000/entry/${id}`);
+            } catch (e){
+                console.log(e);
+            }
+        });
+    }
+</script>

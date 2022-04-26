@@ -52,6 +52,7 @@ input[type=submit]:hover {
 
 table {
 	margin: auto;
+	margin-bottom: 20px;
 }
 
 th, td {
@@ -92,4 +93,28 @@ th, td {
 
 .hidden {
 	display: none;
+}
+
+#nextMonth {
+	font-size: 18px;
+	cursor: pointer;
+    text-decoration: underline;
+	position: relative;
+	left: 150px;
+}
+
+#prevMonth {
+	font-size: 18px;
+	cursor: pointer;
+    text-decoration: underline;
+	position: relative;
+	right: 150px;
+}
+
+#calendar td {
+	cursor: pointer;
+}
+
+#error {
+	color:red;	
 }

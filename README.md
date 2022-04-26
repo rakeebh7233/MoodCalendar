@@ -74,15 +74,10 @@ An Example Calendar:
 * (3 points) Integrate user authentication
     * I'm going to be using passport for user authentication
     * And account has been made for testing; I'll email you the password
-    * see <code>temp</code> for register page
-    * see <code>temp</code> for login page
-* (3 points) Perform client side form validation using a JavaScript library
-    * see <code>temp</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) React.js
-    * React as a frontend framework, assigned 5 points becuase of the learning curve
+    * see <code>views/register.hbs</code> for register page
+    * see <code>views/login.hbs</code> for login page
 * (3 points) Weather API
-    * I'm going use a weather API, no particular one in mind yet, but 
+    * I'm going use OpenWeatherMap weather API
     * I'm assigning 3 because I never used an API before
 * (2 points) Deployment on Heroku
     * I will deploy my project on Heroku, the current domain is <code>https://mood-calendar-ait.herokuapp.com/</code>
@@ -95,6 +90,6 @@ An Example Calendar:
 
 ## Annotations / References Used
 
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on learning react.js](https://reactjs.org/tutorial/tutorial.html)
+1. [passport.js authentication docs](http://passportjs.org/docs) - (auth.js)
+2. [OpenWeatherMap api doc](https://openweathermap.org/current) - (/routes/entry.js)
 

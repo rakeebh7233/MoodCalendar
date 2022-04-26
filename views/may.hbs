@@ -1,0 +1,124 @@
+{{#if user}}
+    <p>Hi {{user.username}}. Let's record your mood!</p>
+    {{!-- This calendar design was pulled and then modified from: --}}
+    {{!-- https://www.geeksforgeeks.org/design-a-calendar-using-html-and-css/ --}}
+    <section>
+        
+        <h2 align="center" style="color: orange;">
+            <a id="prevMonth" href="/">🡸 Prev Month</a> May 2022 
+        </h2>
+        <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+          
+        <!-- The tr tag is used to enter 
+            rows in the table -->
+  
+        <!-- It is used to give the heading to the
+            table. We can give the heading to the 
+            top and bottom of the table -->
+  
+        <caption align="top">
+            <!-- Here we have used the attribute 
+                that is style and we have colored 
+                the sentence to make it better 
+                depending on the web page-->
+        </caption>
+  
+        <!-- Here th stands for the heading of the
+            table that comes in the first row-->
+  
+        <!-- The text in this table header tag will 
+            appear as bold and is center aligned-->
+  
+        <thead>
+            <tr>
+                <!-- Here we have applied inline style 
+                     to make it more attractive-->
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>sat</th>
+            </tr>
+        </thead>
+          
+        <tbody>
+            <tr>
+                <td id="2022-05-01" style="background-color: {{2022-05-01}};">1</td>
+                <td id="2022-05-02" style="background-color: {{2022-05-02}};">2</td>
+                <td id="2022-05-03" style="background-color: {{2022-05-03}};">3</td>
+                <td id="2022-05-04" style="background-color: {{2022-05-04}};">4</td>
+                <td id="2022-05-05" style="background-color: {{2022-05-05}};">5</td>
+                <td id="2022-05-06" style="background-color: {{2022-05-06}};">6</td>
+                <td id="2022-05-07" style="background-color: {{2022-05-07}};">7</td>
+            </tr>
+            <tr>
+                <td id="2022-05-08" style="background-color: {{2022-05-08}};">8</td>
+                <td id="2022-05-09" style="background-color: {{2022-05-09}};">9</td>
+                <td id="2022-05-10" style="background-color: {{2022-05-10}};">10</td>
+                <td id="2022-05-11" style="background-color: {{2022-05-11}};">11</td>
+                <td id="2022-05-12" style="background-color: {{2022-05-12}};">12</td>
+                <td id="2022-05-13" style="background-color: {{2022-05-13}};">13</td>
+                <td id="2022-05-14" style="background-color: {{2022-05-14}};">14</td>
+            </tr>
+            <tr>
+                <td id="2022-05-15" style="background-color: {{2022-05-15}};">15</td>
+                <td id="2022-05-16" style="background-color: {{2022-05-16}};">16</td>
+                <td id="2022-05-17" style="background-color: {{2022-05-17}};">17</td>
+                <td id="2022-05-18" style="background-color: {{2022-05-18}};">18</td>
+                <td id="2022-05-19" style="background-color: {{2022-05-19}};">19</td>
+                <td id="2022-05-20" style="background-color: {{2022-05-20}};">20</td>
+                <td id="2022-05-21" style="background-color: {{2022-05-21}};">21</td>
+            </tr>
+            <tr>
+                <td id="2022-05-22" style="background-color: {{2022-05-22}};">22</td>
+                <td id="2022-05-23" style="background-color: {{2022-05-23}};">23</td>
+                <td id="2022-05-24" style="background-color: {{2022-05-24}};">24</td>
+                <td id="2022-05-25" style="background-color: {{2022-05-25}};">25</td>
+                <td id="2022-05-26" style="background-color: {{2022-05-26}};">26</td>
+                <td id="2022-05-27" style="background-color: {{2022-05-27}};">27</td>
+                <td id="2022-05-28" style="background-color: {{2022-05-28}};">28</td>
+            </tr>
+            <tr></tr>
+                <td id="2022-05-29" style="background-color: {{2022-05-29}};">29</td>
+                <td id="2022-05-30" style="background-color: {{2022-05-30}};">30</td>
+                <td id="2022-05-31" style="background-color: {{2022-05-31}};">31</td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+            </tr>
+            <tr>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        Color Key: <br/>
+        Happy - Blue  <br/>
+        Sad - Orange  <br/>
+        Angry - Red  <br/>
+        Excited - Pink 
+    </div>
+    </section>
+
+{{else}}
+    <a href="/login">Login</a> or <a href="/register">Register</a> to access a calendar.
+{{/if}}
+
+<script>
+    const collection = document.getElementsByTagName("td");
+    for (let i=0; i<collection.length; i++ ) {
+        collection[i].addEventListener('click', function() {
+            const id = this.id;
+            window.location.replace(`http://localhost:3000/entry/${id}`);
+        })
+    }
+</script>
