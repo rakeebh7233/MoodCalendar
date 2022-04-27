@@ -103,16 +103,21 @@ router.post('/create', async (req,res) => {
 router.get('/:slug', async (req, res) => {
 	const slug = req.params.slug;
     const calendar = await Calendar.findOne({user: req.user._id});
-    console.log(calendar);
+    let foundSlug = false;
     if (calendar) {
         calendar.days.map(day => {
-            if (day.date == slug) {
+            if (day.date === slug) {
+                console.log("here")
                 day.moods = day.moods.join(" and ")
                 res.render('entry-slug', {day});
-                return;
+                foundSlug = true;
             }
-        })
+        });
+
     } else {
+        res.redirect('/');
+    }
+    if (!foundSlug) {
         res.redirect('/');
     }
 });
