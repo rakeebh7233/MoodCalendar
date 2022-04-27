@@ -102,4 +102,26 @@ router.get('/may', (req, res) =>  {
   }
 }); 
 
+router.get('/may/entry/:slug', async (req, res) => {
+  const slug = req.params.slug;
+  const calendar = await Calendar.findOne({user: req.user._id});
+  let foundSlug = false;
+  console.log("I am here")
+  if (calendar) {
+      calendar.days.map(day => {
+          if (day.date === slug) {
+              day.moods = day.moods.join(" and ")
+              res.render('entry-slug', {day});
+              foundSlug = true;
+          }
+      });
+
+  } else {
+      res.redirect('/');
+  }
+  if (!foundSlug) {
+      res.redirect('/');
+  }
+});
+
 module.exports = router;
