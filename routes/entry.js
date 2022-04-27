@@ -107,7 +107,6 @@ router.get('/:slug', async (req, res) => {
     if (calendar) {
         calendar.days.map(day => {
             if (day.date === slug) {
-                console.log("here")
                 day.moods = day.moods.join(" and ")
                 res.render('entry-slug', {day});
                 foundSlug = true;

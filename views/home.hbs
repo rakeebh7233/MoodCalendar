@@ -119,7 +119,8 @@
         collection[i].addEventListener('click', function() {
             const id = this.id;
             try {
-                window.location.assign(`http://localhost:3000/entry/${id}`);
+                const currentURL = window.location.href;
+                window.location.assign(`${currentURL}entry/${id}`);
             } catch (e){
                 console.log(e);
             }
