@@ -117,10 +117,11 @@ router.get('/may/entry/:slug', async (req, res) => {
       });
 
   } else {
-      res.redirect('/');
+    res.redirect('/');
+    foundSlug = true;
   }
   if (!foundSlug) {
-      res.redirect('/');
+    res.redirect('/');
   }
 });
 

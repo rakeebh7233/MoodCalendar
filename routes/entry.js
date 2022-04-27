@@ -115,6 +115,7 @@ router.get('/:slug', async (req, res) => {
 
     } else {
         res.redirect('/');
+        foundSlug = true;
     }
     if (!foundSlug) {
         res.redirect('/');
